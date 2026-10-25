@@ -6,8 +6,10 @@ import Message from "./components/Message";
 import TypingIndicator from "./components/TypingIndicator";
 import ChatInput from "./components/ChatInput";
 
-const API_URL = import.meta.env.VITE_API_URL?.replace(/\/+$/, "") || "";
-
+const API_URL =
+  import.meta.env.VITE_API_URL?.replace(/\/+$/, "") ||
+  "https://aman-ai-assistant-backed-1.onrender.com";
+  
 function getAnswer(payload) {
   if (typeof payload === "string") return payload.trim();
   if (!payload || typeof payload !== "object") return "";
