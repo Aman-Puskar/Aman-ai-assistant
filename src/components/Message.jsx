@@ -1,8 +1,9 @@
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import useTypewriter from "../hooks/useTypewriter";
 
 const mdComponents = {
-  a: (props) => <a {...props} target="_blank" rel="noreferrer" />,
+  a: (props) => <a {...props} target="_blank" rel="noopener noreferrer" />,
 };
 
 export default function Message({ role, text, animate, onTick, onDone }) {
@@ -22,7 +23,9 @@ export default function Message({ role, text, animate, onTick, onDone }) {
     <div className="row bot">
       <div className="avatar">AP</div>
       <div className="content">
-        <ReactMarkdown components={mdComponents}>{shown}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>
+          {shown}
+        </ReactMarkdown>
         {typing && <span className="caret" />}
       </div>
     </div>
